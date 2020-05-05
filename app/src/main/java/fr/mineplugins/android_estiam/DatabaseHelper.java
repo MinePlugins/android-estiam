@@ -44,7 +44,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long res = db.insert(TABLE_NAME, null, contentValues);
         return res != -1;
     }
-
+    public Cursor getAllFav(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE product_liked = 1", null);
+        return res;
+    }
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);

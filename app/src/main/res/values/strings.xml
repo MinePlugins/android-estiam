@@ -15,4 +15,6 @@
     <string name="produit_favori">Produit Favori</string>
     <string name="profile">Profile</string>
     <string name="register">Register</string>
+    <string name="produits">Produits</string>
+    <string name="aucun_produit_en_favorie_pour_le_moment">Aucun produit en favorie pour le moment</string>
 </resources>

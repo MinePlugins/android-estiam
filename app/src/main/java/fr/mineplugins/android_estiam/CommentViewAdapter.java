@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class CommentViewAdapter extends RecyclerView.Adapter<CommentViewAdapter.
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_comments, parent, false);
         ViewHolder holder = new ViewHolder(view);
+
         return holder;
     }
 
@@ -65,8 +67,8 @@ public class CommentViewAdapter extends RecyclerView.Adapter<CommentViewAdapter.
         holder.content.setText(comments.get(position).content);
         TextDrawable drawable = TextDrawable.builder()
                 .beginConfig()
-                .width(80)  // width in px
-                .height(80) // height in px
+                .width(40)  // width in px
+                .height(40) // height in px
                 .endConfig()
                 .buildRound(comments.get(position).email.substring(0,2).toUpperCase(), getRandomMaterialColor("400"));
         holder.avatar.setImageDrawable(drawable);

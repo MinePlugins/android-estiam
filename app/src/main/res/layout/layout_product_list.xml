@@ -20,5 +20,11 @@
         tools:ignore="MissingConstraints">
 
     </androidx.recyclerview.widget.RecyclerView>
+    <FrameLayout
+        android:id="@+id/product_detail_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
 </RelativeLayout>

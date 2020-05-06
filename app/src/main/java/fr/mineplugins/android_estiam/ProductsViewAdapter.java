@@ -2,6 +2,7 @@ package fr.mineplugins.android_estiam;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -62,13 +64,15 @@ public class ProductsViewAdapter extends RecyclerView.Adapter<ProductsViewAdapte
 
         }
         holder.productName.setText(productList.get(position).titre);
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked !!");
-                Toast.makeText(context, productList.get(position).titre, Toast.LENGTH_SHORT).show();
-            }
+        holder.parentLayout.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ProductDetailActivity.class);
+            intent.putExtra("image_url", productList.get(position).url);
+            intent.putExtra("id", productList.get(position).id);
+            intent.putExtra("titre", productList.get(position).titre);
+            intent.putExtra("liked", productList.get(position).liked);
+            context.startActivity(intent);
         });
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -91,8 +95,6 @@ public class ProductsViewAdapter extends RecyclerView.Adapter<ProductsViewAdapte
         @SuppressLint("ResourceType")
         @Override
         public void onClick(View view) {
-            Log.e(TAG, "onClick: " + productLiked.getIconTint().toString());
-            Log.e(TAG, "onClick: " + context.getColorStateList(R.color.colorAccent).toString());
             if(productLiked.getIconTint().toString().equals(context.getColorStateList(R.color.colorAccent).toString())){
                 productLiked.setIconTintResource(R.color.colorPrimary);
                 productLiked.setIconResource(R.drawable.ic_unlike);

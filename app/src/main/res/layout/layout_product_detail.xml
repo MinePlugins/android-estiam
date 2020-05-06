@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/product_detail_image"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_weight="70"/>
+
+    <TextView
+        android:id="@+id/product_detail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/product_detail_image"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="Test"
+        android:textSize="20sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/product_detail_like"
+        android:layout_below="@id/product_detail_image"
+        android:layout_alignRight="@id/product_detail_image"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        app:icon="@drawable/ic_unlike"
+        android:layout_margin="16dp"
+        app:iconSize="40sp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_below="@id/product_detail_like"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

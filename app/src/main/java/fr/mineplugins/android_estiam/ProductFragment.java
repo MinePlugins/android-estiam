@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,7 +62,7 @@ public class ProductFragment extends Fragment implements ProductsViewAdapter.OnP
                         }
                         Product product = new Product();
                         product.readFromJson(item);
-                        boolean isInserted = productDB.insertData(product.titre, product.url, false);
+                        boolean isInserted = productDB.insertData(product.titre, product.url, false, product.id);
                         if(isInserted){
                             Log.d("INSERTED", "INSERTED");
                         }
@@ -91,6 +93,8 @@ public class ProductFragment extends Fragment implements ProductsViewAdapter.OnP
         return listProducts;
     }
 
+
+
     public void initRecyclerView(ArrayList<Product> listProducts, View view){
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(context);
@@ -98,15 +102,15 @@ public class ProductFragment extends Fragment implements ProductsViewAdapter.OnP
         ProductsViewAdapter adapter = new ProductsViewAdapter(listProducts, context, this);
         recyclerView.setAdapter(adapter);
     }
-
     @Override
     public void onProductLike(int position) {
         Log.e("TAG", "onProductLike: CLICKED - " + position);
         productDB.onLiked(listProducts.get(position).id);
 
-
 //        listProducts.get(position);
 //        Intent intent = new Intent(this, NewActivity.java);
 //        startActivity(intent);
     }
+
+
 }

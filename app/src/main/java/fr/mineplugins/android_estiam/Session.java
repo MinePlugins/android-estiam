@@ -15,7 +15,11 @@ public class Session {
     public void setEmail(String email) {
         prefs.edit().putString("email", email).commit();
     }
-
+    public void clear(){
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.commit();
+    }
     public String getEmail() {
         String email = prefs.getString("email","");
         return email;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="176dp"
     android:background="@color/colorAccent"
@@ -8,15 +8,18 @@
     android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:id="@+id/nav_profile_pic"
+        android:layout_height="80dp"
         android:src="@mipmap/ic_launcher_round" />
 
     <TextView
         android:layout_width="wrap_content"
+        android:id="@+id/nav_profile_email"
         android:layout_height="wrap_content"
+        android:layout_below="@id/nav_profile_pic"
         android:paddingTop="8dp"
         android:text="email@email.com"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
-</LinearLayout>
+</RelativeLayout>

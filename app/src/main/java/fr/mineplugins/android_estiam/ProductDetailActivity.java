@@ -191,7 +191,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         TextInputLayout comment = findViewById(R.id.field_comments);
         send_comment.setVisibility(View.INVISIBLE);
         comment.setVisibility(View.INVISIBLE);
-        if(session.getEmail() != null){
+        if(session.getEmail() != ""){
             Log.e(TAG, "setImage: YYESYSYS" + session.getEmail());
             send_comment.setVisibility(View.VISIBLE);
             comment.setVisibility(View.VISIBLE);

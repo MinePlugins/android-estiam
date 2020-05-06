@@ -1,6 +1,7 @@
 package fr.mineplugins.android_estiam;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -161,6 +162,14 @@ public class RegisterFragment extends Fragment {
                             Collections.addAll(users, userArr);
                             session.setEmail(users.get(0).email);
                             resetTextMessage();
+                            Intent intent = getActivity().getIntent();
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
+                                    | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            getActivity().overridePendingTransition(0, 0);
+                            getActivity().finish();
+
+                            getActivity().overridePendingTransition(0, 0);
+                            startActivity(intent);
                         } catch (JsonParseException e) {
                             setTextMessage("Email ou mot de passe invalide");
                             field_email.setError("Veuillez vérifier");

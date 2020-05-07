@@ -119,8 +119,8 @@ public class RegisterFragment extends Fragment {
                         try {
                             RegisterResponse register = g.fromJson(response, RegisterResponse.class);
                             if (register.success == 200) {
-                                session.setEmail(register.email);
                                 resetTextMessage();
+                                login();
                             } else {
                                 setTextMessage(register.message);
                             }
@@ -161,6 +161,8 @@ public class RegisterFragment extends Fragment {
                             User[] userArr = g.fromJson(response, User[].class);
                             Collections.addAll(users, userArr);
                             session.setEmail(users.get(0).email);
+                            session.setId(users.get(0).id);
+                            session.setName(users.get(0).name);
                             resetTextMessage();
                             Intent intent = getActivity().getIntent();
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
